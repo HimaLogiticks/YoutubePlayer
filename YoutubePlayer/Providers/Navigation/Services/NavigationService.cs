@@ -57,39 +57,6 @@ namespace YoutubePlayer.Providers.Navigation.Services
 
             return Task.FromResult(true);
         }
-
-        public Task RemoveLastPageAsync()
-        {
-            var mainPage = Application.Current.MainPage as CustomNavigationView;
-
-            if (mainPage != null)
-            {
-                mainPage.Navigation.PopAsync();
-            }
-
-            return Task.FromResult(true);
-        }
-
-        public Task RemoveLastFromBackStackAsync()
-        {
-            var mainPage = Application.Current.MainPage as CustomNavigationView;
-
-            if (mainPage != null)
-            {
-                mainPage.Navigation.RemovePage(
-                    mainPage.Navigation.NavigationStack[mainPage.Navigation.NavigationStack.Count - 2]);
-            }
-
-            return Task.FromResult(true);
-        }
-        public async Task RemoveModalAsync()
-        {
-            var navigationPage = Application.Current.MainPage as CustomNavigationView;
-            if (navigationPage != null)
-            {
-                await navigationPage.Navigation.PopModalAsync();
-            }
-        }
         public async Task PopAsync()
         {
             var navigationPage = Application.Current.MainPage as CustomNavigationView;
@@ -99,23 +66,7 @@ namespace YoutubePlayer.Providers.Navigation.Services
             }
         }
 
-        public Task RemoveBackStackAsync()
-        {
-            var mainPage = Application.Current.MainPage as CustomNavigationView;
-
-            if (mainPage != null)
-            {
-                for (int i = 0; i < mainPage.Navigation.NavigationStack.Count - 1; i++)
-                {
-                    var page = mainPage.Navigation.NavigationStack[i];
-                    mainPage.Navigation.RemovePage(page);
-                }
-            }
-
-            return Task.FromResult(true);
-        }
-
-        private async Task InternalNavigateToAsync(Type viewModelType, object parameter, NavigationMode navigationMode, bool clearNavigationStack = false)
+        async Task InternalNavigateToAsync(Type viewModelType, object parameter, NavigationMode navigationMode, bool clearNavigationStack = false)
         {
             Page page = CreatePage(viewModelType);
 
@@ -151,7 +102,7 @@ namespace YoutubePlayer.Providers.Navigation.Services
 
         }
 
-        private Type GetPageTypeForViewModel(Type viewModelType)
+        Type GetPageTypeForViewModel(Type viewModelType)
         {
             var viewName = viewModelType.FullName.Replace("Model", string.Empty);
             var viewModelAssemblyName = viewModelType.GetTypeInfo().Assembly.FullName;
@@ -160,7 +111,7 @@ namespace YoutubePlayer.Providers.Navigation.Services
             return viewType;
         }
 
-        private Page CreatePage(Type viewModelType)
+        Page CreatePage(Type viewModelType)
         {
             Type pageType = GetPageTypeForViewModel(viewModelType);
             if (pageType == null)

@@ -1,8 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using YoutubePlayer.Features.VideoPlayer.Services;
+using YoutubePlayer.Providers.Analytics.Services;
 using YoutubePlayer.Providers.Navigation.Base;
+using YoutubePlayer.Providers.Navigation.Services;
+using YoutubePlayer.Resx;
 
 namespace YoutubePlayer.Features.VideoPlayer.Pages
 {
@@ -10,11 +14,11 @@ namespace YoutubePlayer.Features.VideoPlayer.Pages
     {
         #region Properties
 
-        bool _isRunning = true;
-        public bool IsRunning
+        bool _isLoading = true;
+        public bool IsLoading
         {
-            get => _isRunning;
-            set => SetProperty(ref _isRunning, value);
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
         }
 
         string _author;
@@ -55,15 +59,20 @@ namespace YoutubePlayer.Features.VideoPlayer.Pages
 
         #region Services
 
+        readonly IAnalyticsService _analyticsService;
         readonly IMediaService _mediaService;
+        readonly INavigationService _navigationService;
 
         #endregion
 
         #region Constructor
 
-        public VideoPlayerViewModel(IMediaService mediaService)
+        public VideoPlayerViewModel(IAnalyticsService analyticsService, IMediaService mediaService,
+                                    INavigationService navigationService)
         {
+            _analyticsService = analyticsService;
             _mediaService = mediaService;
+            _navigationService = navigationService;
             MediaOpenedCommand = new Command(MediaOpened);
         }
 
@@ -73,18 +82,27 @@ namespace YoutubePlayer.Features.VideoPlayer.Pages
 
         void MediaOpened()
         {
-            IsRunning = false;
+            IsLoading = false;
         }
 
         async Task GetMediaInfo(string url)
         {
-            var mediaInfo = await _mediaService.GetMediaInfoAsync(url);
-            if (mediaInfo != default)
+            try
             {
-                Author = mediaInfo.Author;
-                Title = mediaInfo.Title;
-                Duration = mediaInfo.Duration;
-                Url = mediaInfo.Url;
+                var mediaInfo = await _mediaService.GetMediaInfoAsync(url);
+                if (mediaInfo != default)
+                {
+                    Author = mediaInfo.Author;
+                    Title = mediaInfo.Title;
+                    Duration = mediaInfo.Duration;
+                    Url = mediaInfo.Url;
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert(AppResources.AlertText, ex.Message, AppResources.OkText);
+                _analyticsService.TrackError(ex);
+                await _navigationService.PopAsync();
             }
         }
 

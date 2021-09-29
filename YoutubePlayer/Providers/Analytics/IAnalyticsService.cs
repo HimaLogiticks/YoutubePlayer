@@ -7,7 +7,6 @@ namespace YoutubePlayer.Providers.Analytics.Services
     {
         void TrackEvent(string eventName);
         void TrackEvent(string eventName, Dictionary<string, string> dictionary);
-        void TrackView(string viewName);
         void TrackError(Exception error, Dictionary<string, string> properties = null);
     }
 }

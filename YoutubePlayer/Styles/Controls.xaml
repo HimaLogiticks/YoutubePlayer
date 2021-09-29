@@ -5,10 +5,12 @@
                     xmlns:views="http://xamarin.com/schemas/2020/toolkit">
 
     <Style TargetType="views:MediaElement">
+        <Setter Property="BackgroundColor" Value="{StaticResource BlackColor}" />
         <Setter Property="ShowsPlaybackControls" Value="True" />
     </Style>
 
     <Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{StaticResource WhiteColor}" />
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
     </Style>
@@ -30,6 +32,7 @@
         <Setter Property="FontFamily" Value="{StaticResource PrimaryFontRegular}" />
         <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
         <Setter Property="BackgroundColor" Value="{StaticResource BlackColor}" />
+        <!--<Setter Property="Padding" Value="{StaticResource padding_10}" />-->
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
     </Style>

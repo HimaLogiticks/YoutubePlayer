@@ -8,6 +8,7 @@ namespace YoutubePlayer.Providers.Navigation.Base
 
         public ViewModelBase()
         {
+            
         }
 
         #endregion

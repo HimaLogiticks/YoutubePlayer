@@ -13,15 +13,10 @@ namespace YoutubePlayer.Providers.Analytics.Services
             var properties = new Dictionary<string, string>();
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent(eventName, properties);
         }
+
         public void TrackEvent(string eventName, Dictionary<string, string> properties)
         {
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent(eventName, properties);
-        }
-
-        public void TrackView(string viewName)
-        {
-            var properties = new Dictionary<string, string>();
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(viewName, properties);
         }
 
         public void TrackError(Exception error, Dictionary<string, string> properties = null)

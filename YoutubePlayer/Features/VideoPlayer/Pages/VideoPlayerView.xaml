@@ -16,11 +16,11 @@
                                                 Command="{Binding MediaOpenedCommand}" />
                 </views:MediaElement.Behaviors>
             </views:MediaElement>
-            <ActivityIndicator IsRunning="{Binding IsRunning}"/>
+            <ActivityIndicator IsRunning="{Binding IsLoading}"/>
             <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
                   ColumnDefinitions="*,Auto,3*"
                   Padding="{StaticResource padding_10}"
-                  IsVisible="{Binding IsRunning, Converter={StaticResource InvertedBoolConverter}}">
+                  IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}">
                 <Label Text="{x:Static resources:AppResources.TitleText}"
                        Style="{DynamicResource BaseLabelStyle}"/>
                 <Label Grid.Column="2" Text="{Binding Title}"

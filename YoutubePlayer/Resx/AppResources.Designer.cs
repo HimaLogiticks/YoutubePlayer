@@ -71,9 +71,9 @@ namespace YoutubePlayer.Resx {
             }
         }
         
-        public static string InvalidUrlMessage {
+        public static string EnterValidUrlMessage {
             get {
-                return ResourceManager.GetString("InvalidUrlMessage", resourceCulture);
+                return ResourceManager.GetString("EnterValidUrlMessage", resourceCulture);
             }
         }
         

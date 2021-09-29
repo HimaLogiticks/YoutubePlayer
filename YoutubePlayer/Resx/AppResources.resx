@@ -24,8 +24,8 @@
 	<data name="GoText" xml:space="preserve">
 		<value>Go</value>
 	</data>
-	<data name="InvalidUrlMessage" xml:space="preserve">
-		<value>The url you have entered is not valid!</value>
+	<data name="EnterValidUrlMessage" xml:space="preserve">
+		<value>Please enter a valid url and try again!</value>
 	</data>
 	<data name="CannotLocatePageMessage" xml:space="preserve">
 		<value>Cannot locate page type for</value>

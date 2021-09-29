@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using YoutubeExplode;
 using YoutubeExplode.Videos.Streams;
 using YoutubePlayer.Features.VideoPlayer.Models;
@@ -17,6 +18,14 @@ namespace YoutubePlayer.Features.VideoPlayer.Services
         #endregion
 
         #region Methods
+
+        public bool IsValidUrl(string url)
+        {
+            Uri uriResult;
+            bool isValid = Uri.TryCreate(url, UriKind.Absolute, out uriResult)
+                && uriResult.Scheme == Uri.UriSchemeHttps;
+            return isValid;
+        }
 
         public async Task<MediaInfo> GetMediaInfoAsync(string url)
         {

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using YoutubePlayer.Features.VideoPlayer.Pages;
+using YoutubePlayer.Features.VideoPlayer.Services;
 using YoutubePlayer.Providers.Navigation.Base;
 using YoutubePlayer.Providers.Navigation.Services;
 using YoutubePlayer.Resx;
@@ -30,14 +30,16 @@ namespace YoutubePlayer.Features.Home.Pages
 
         #region Services
 
+        readonly IMediaService _mediaService;
         readonly INavigationService _navigationService;
 
         #endregion
 
         #region Constructor
 
-        public HomePageViewModel(INavigationService navigationService)
+        public HomePageViewModel(IMediaService mediaService, INavigationService navigationService)
         {
+            _mediaService = mediaService;
             _navigationService = navigationService;
             PlayVideoCommand = new Command(async () => await NavigateToVideoPlayerPage());
         }
@@ -48,9 +50,9 @@ namespace YoutubePlayer.Features.Home.Pages
 
         async Task NavigateToVideoPlayerPage()
         {
-            if (!IsValidUrl(Url))
+            if (!_mediaService.IsValidUrl(Url))
             {
-                await Application.Current.MainPage.DisplayAlert(AppResources.AlertText, AppResources.InvalidUrlMessage, AppResources.OkText);
+                await Application.Current.MainPage.DisplayAlert(AppResources.AlertText, AppResources.EnterValidUrlMessage, AppResources.OkText);
             }
             else
             {
@@ -58,13 +60,6 @@ namespace YoutubePlayer.Features.Home.Pages
             }
         }
 
-        bool IsValidUrl(string url)
-        {
-            Uri uriResult;
-            bool isValid = Uri.TryCreate(url, UriKind.Absolute, out uriResult)
-                && uriResult.Scheme == Uri.UriSchemeHttps;
-            return isValid;
-        }
         #endregion
     }
 }
