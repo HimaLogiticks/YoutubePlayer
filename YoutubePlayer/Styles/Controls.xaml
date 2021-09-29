@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:views="http://xamarin.com/schemas/2020/toolkit">
+
+    <Style TargetType="views:MediaElement">
+        <Setter Property="ShowsPlaybackControls" Value="True" />
+    </Style>
+
+    <Style TargetType="ActivityIndicator">
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+    </Style>
+
+    <Style x:Key="HorizontalSeparatorStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="0.5" />
+        <Setter Property="BackgroundColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+
+    <Style x:Key="VerticalSeparatorStyle" TargetType="BoxView">
+        <Setter Property="WidthRequest" Value="0.5" />
+        <Setter Property="BackgroundColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="{StaticResource MediumLabelSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFontRegular}" />
+        <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+    </Style>
+
+    <Style x:Key="BaseLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource MediumLabelSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFontRegular}" />
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="Padding" Value="{StaticResource padding_10}" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+    </Style>
+
+    <Style x:Key="EntryTextStyle" TargetType="Entry">
+        <Setter Property="FontSize" Value="{StaticResource MediumLabelSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource PrimaryFontRegular}" />
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="YoutubePlayer.Features.VideoPlayer.Pages.VideoPlayerView"
+    xmlns:viewModelBase="clr-namespace:YoutubePlayer;assembly=YoutubePlayer"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:resources="clr-namespace:YoutubePlayer.Resx"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.Behaviors;assembly=Xamarin.CommunityToolkit">
+    <ContentPage.Content>
+        <Grid RowDefinitions="2*,*">
+            <views:MediaElement Source="{Binding Url}">
+                <views:MediaElement.Behaviors>
+                    <xct:EventToCommandBehavior EventName="MediaOpened"
+                                                Command="{Binding MediaOpenedCommand}" />
+                </views:MediaElement.Behaviors>
+            </views:MediaElement>
+            <ActivityIndicator IsRunning="{Binding IsRunning}"/>
+            <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                  ColumnDefinitions="*,Auto,3*"
+                  Padding="{StaticResource padding_10}"
+                  IsVisible="{Binding IsRunning, Converter={StaticResource InvertedBoolConverter}}">
+                <Label Text="{x:Static resources:AppResources.TitleText}"
+                       Style="{DynamicResource BaseLabelStyle}"/>
+                <Label Grid.Column="2" Text="{Binding Title}"
+                       Style="{DynamicResource BaseLabelStyle}"/>
+                <BoxView Grid.Row="1" Grid.ColumnSpan="3"
+                         Style="{StaticResource HorizontalSeparatorStyle}"/>
+                <Label Grid.Row="2" Text="{x:Static resources:AppResources.AuthorText}"
+                       Style="{DynamicResource BaseLabelStyle}"/>
+                <Label Grid.Row="2" Grid.Column="2" Text="{Binding Author}"
+                       Style="{DynamicResource BaseLabelStyle}"/>
+                <BoxView Grid.Row="3" Grid.ColumnSpan="3"
+                         Style="{StaticResource HorizontalSeparatorStyle}"/>
+                <Label Grid.Row="4" Text="{x:Static resources:AppResources.DurationText}"
+                       Style="{DynamicResource BaseLabelStyle}"/>
+                <Label Grid.Row="4" Grid.Column="2" Text="{Binding Duration}"
+                       Style="{DynamicResource BaseLabelStyle}"/>
+                <BoxView Grid.Row="5" Grid.ColumnSpan="3"
+                         Style="{StaticResource HorizontalSeparatorStyle}"/>
+                <BoxView Grid.RowSpan="6" Grid.Column="1"
+                         Style="{StaticResource VerticalSeparatorStyle}"/>
+        </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

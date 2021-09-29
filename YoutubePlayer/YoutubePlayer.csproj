@@ -1,0 +1,93 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="YoutubeExplode" Version="6.0.5" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="YoutubeExplode" />
+    <None Remove="Xamarin.Forms" />
+    <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="Features\" />
+    <None Remove="Features\Home\" />
+    <None Remove="Features\VideoPlayer\" />
+    <None Remove="Provider\" />
+    <None Remove="Providers\Analytics\" />
+    <None Remove="Providers\Navigation\" />
+    <None Remove="Constants\" />
+    <None Remove="Microsoft.AppCenter" />
+    <None Remove="Microsoft.AppCenter.Crashes" />
+    <None Remove="Microsoft.AppCenter.Analytics" />
+    <None Remove="Microsoft.Extensions.DependencyInjection" />
+    <None Remove="Microsoft.Extensions.Hosting" />
+    <None Remove="Providers\Analytics\Services\" />
+    <None Remove="Providers\Navigation\Services\" />
+    <None Remove="Providers\Navigation\Enums\" />
+    <None Remove="Resx\" />
+    <None Remove="Features\Home\Pages\" />
+    <None Remove="Features\VideoPlayer\Pages\" />
+    <None Remove="Features\VideoPlayer\Services\" />
+    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="Features\VideoPlayer\Models\" />
+    <None Remove="Providers\Navigation\Controls\" />
+    <None Remove="Styles\" />
+    <None Remove="Assets\" />
+    <None Remove="Assets\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Features\Home\" />
+    <Folder Include="Features\VideoPlayer\" />
+    <Folder Include="Providers\" />
+    <Folder Include="Providers\Analytics\" />
+    <Folder Include="Providers\Navigation\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Providers\Analytics\Services\" />
+    <Folder Include="Providers\Navigation\Services\" />
+    <Folder Include="Providers\Navigation\Enums\" />
+    <Folder Include="Resx\" />
+    <Folder Include="Features\Home\Pages\" />
+    <Folder Include="Features\VideoPlayer\Pages\" />
+    <Folder Include="Features\VideoPlayer\Services\" />
+    <Folder Include="Features\VideoPlayer\Models\" />
+    <Folder Include="Providers\Navigation\Controls\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Assets\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resx\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resx\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Features\Home\Pages\HomePageView.xaml.cs">
+      <DependentUpon>HomePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Features\VideoPlayer\Pages\VideoPlayerView.xaml.cs">
+      <DependentUpon>..\HomePageView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

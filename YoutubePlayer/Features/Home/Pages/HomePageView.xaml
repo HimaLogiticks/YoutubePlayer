@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="YoutubePlayer.Features.Home.Pages.HomePageView"
+    xmlns:resources="clr-namespace:YoutubePlayer.Resx"
+    xmlns:viewModelBase="clr-namespace:YoutubePlayer;assembly=YoutubePlayer"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="*,Auto"
+              Padding="{StaticResource padding_10}"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="CenterAndExpand">
+            <Entry Style="{StaticResource EntryTextStyle}"
+                   Placeholder="{x:Static resources:AppResources.PasteUrlText}"
+                   Text="{Binding Url}"/>
+            <Button Grid.Column="1" Command="{Binding PlayVideoCommand}"
+                    Text="{x:Static resources:AppResources.GoText}"
+                    Style="{StaticResource BaseButtonStyle}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
