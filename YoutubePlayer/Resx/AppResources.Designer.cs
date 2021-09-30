@@ -47,6 +47,18 @@ namespace YoutubePlayer.Resx {
             }
         }
         
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        public static string VideoPlayerText {
+            get {
+                return ResourceManager.GetString("VideoPlayerText", resourceCulture);
+            }
+        }
+        
         public static string AlertText {
             get {
                 return ResourceManager.GetString("AlertText", resourceCulture);

@@ -4,11 +4,16 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <x:String x:Key="PrimaryFontRegular">roboto_regular</x:String>
+    <x:String x:Key="TitleFont">calligraphy</x:String>
 
     <Thickness x:Key="padding_10">10</Thickness>
 
+    <OnPlatform x:Key="TitleLabelSize" x:TypeArguments="x:Double">
+        <On Platform="Android">150</On>
+        <On Platform="iOS">150</On>
+    </OnPlatform>
     <OnPlatform x:Key="MediumLabelSize" x:TypeArguments="x:Double">
         <On Platform="Android">14</On>
-        <On Platform="iOS">14</On>
+        <On Platform="iOS">15</On>
     </OnPlatform>
 </ResourceDictionary>

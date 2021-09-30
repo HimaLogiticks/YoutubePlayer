@@ -8,16 +8,21 @@
     viewModelBase:ViewModelLocator.AutoWireViewModel="true"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid ColumnDefinitions="*,Auto"
-              Padding="{StaticResource padding_10}"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="CenterAndExpand">
-            <Entry Style="{StaticResource EntryTextStyle}"
-                   Placeholder="{x:Static resources:AppResources.PasteUrlText}"
-                   Text="{Binding Url}"/>
-            <Button Grid.Column="1" Command="{Binding PlayVideoCommand}"
+        <StackLayout Style="{StaticResource HomeBackgroundStyle}">
+            <Grid RowDefinitions="3*,2*,Auto"
+                  Style="{StaticResource BaseGridStyle}">
+            <Label Text="{x:Static resources:AppResources.AppName}"
+                   Style="{StaticResource TitleLabelStyle}"/>
+            <Frame Grid.Row="1">
+                <Editor Style="{StaticResource EditorTextStyle}"
+                    Placeholder="{x:Static resources:AppResources.PasteUrlText}"
+                    Text="{Binding Url}"/>
+            </Frame>
+            <Button Grid.Row="2" 
                     Text="{x:Static resources:AppResources.GoText}"
-                    Style="{StaticResource BaseButtonStyle}"/>
+                    Style="{StaticResource BaseButtonStyle}"
+                    Command="{Binding PlayVideoCommand}"/>
         </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

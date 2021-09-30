@@ -32,9 +32,10 @@
         <Setter Property="FontFamily" Value="{StaticResource PrimaryFontRegular}" />
         <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
         <Setter Property="BackgroundColor" Value="{StaticResource BlackColor}" />
-        <!--<Setter Property="Padding" Value="{StaticResource padding_10}" />-->
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="WidthRequest" Value="100" />
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
     </Style>
 
     <Style x:Key="BaseLabelStyle" TargetType="Label">
@@ -47,11 +48,64 @@
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
 
-    <Style x:Key="EntryTextStyle" TargetType="Entry">
+    <Style x:Key="TitleLabelStyle" TargetType="Label"
+           BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="FontFamily" Value="{StaticResource TitleFont}" />
+        <Setter Property="FontSize" Value="{StaticResource TitleLabelSize}" />
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+
+    <Style x:Key="EditorTextStyle" TargetType="Editor">
         <Setter Property="FontSize" Value="{StaticResource MediumLabelSize}" />
         <Setter Property="FontFamily" Value="{StaticResource PrimaryFontRegular}" />
         <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource BlackColor}" />
         <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+
+    <Style TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+        <Setter Property="BorderColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="Padding" Value="{StaticResource padding_10}" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+
+    <Style x:Key="HomeBackgroundStyle" TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Background">
+            <RadialGradientBrush Center="0.5,0.5"
+                                     Radius="0.5">
+                    <GradientStop Color="{StaticResource WhiteColor}"
+                                  Offset="0.1"/>
+                    <GradientStop Color="{StaticResource LightGreenColor}"
+                                  Offset="1.0"/>
+                </RadialGradientBrush>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PlayerBackgroundStyle" TargetType="Grid">
+        <Setter Property="Background">
+            <RadialGradientBrush Center="0.5,0.5"
+                                     Radius="0.5">
+                    <GradientStop Color="{StaticResource WhiteColor}"
+                                  Offset="0.1"/>
+                    <GradientStop Color="{StaticResource LightGreenColor}"
+                                  Offset="1.0"/>
+                </RadialGradientBrush>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BaseGridStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="{StaticResource padding_10}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
     </Style>
 </ResourceDictionary>

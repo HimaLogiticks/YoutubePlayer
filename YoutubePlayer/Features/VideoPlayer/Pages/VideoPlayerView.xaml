@@ -7,9 +7,11 @@
     viewModelBase:ViewModelLocator.AutoWireViewModel="true"
     xmlns:views="http://xamarin.com/schemas/2020/toolkit"
     xmlns:resources="clr-namespace:YoutubePlayer.Resx"
-    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.Behaviors;assembly=Xamarin.CommunityToolkit">
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.Behaviors;assembly=Xamarin.CommunityToolkit"
+    Title="{x:Static resources:AppResources.VideoPlayerText}">
     <ContentPage.Content>
-        <Grid RowDefinitions="2*,*">
+        <Grid RowDefinitions="2*,*"
+              Style="{StaticResource PlayerBackgroundStyle}">
             <views:MediaElement Source="{Binding Url}">
                 <views:MediaElement.Behaviors>
                     <xct:EventToCommandBehavior EventName="MediaOpened"

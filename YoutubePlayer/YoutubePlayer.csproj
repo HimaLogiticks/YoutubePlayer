@@ -51,6 +51,8 @@
     <None Remove="Styles\" />
     <None Remove="Assets\" />
     <None Remove="Assets\Fonts\" />
+    <None Remove="Assets\Fonts\calligraphy.otf" />
+    <None Remove="Assets\Fonts\roboto_regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />
@@ -72,6 +74,10 @@
     <Folder Include="Styles\" />
     <Folder Include="Assets\" />
     <Folder Include="Assets\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\calligraphy.otf" />
+    <EmbeddedResource Include="Assets\Fonts\roboto_regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resx\AppResources.resx">
